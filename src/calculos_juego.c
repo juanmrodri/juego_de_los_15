@@ -128,12 +128,282 @@ int buscarPosicionNulaArray(int arrayTablero[][3], int lenFilas, int lenColumnas
 	return ret;
 }
 
-int intercambioValoresArray(int arrayTablero[], int lenFilas, int lenColumnas, int indiceFila, int indiceColumna, int filaPosNula, int columnaPosNula)
+int validarSwapeo(int arrayTablero[][3], int lenFilas, int lenColumnas, int filaSeleccionada, int columnaSeleccionada)
+{
+	int ret=-1;
+	if(arrayTablero != NULL && lenFilas > 0 &&  lenColumnas > 0)
+	{	// pos 0,0
+		if(filaSeleccionada==0 && columnaSeleccionada==0)
+		{
+			if(arrayTablero[0][1]==0)
+			{
+				// el swapeo es posible!
+				ret=0;
+			}
+			else
+			{
+				if(arrayTablero[1][0]==0)
+				{
+					// el swapeo es posible!
+					ret=0;
+				}
+				else
+				{
+					// no se puede realizar el swapeo
+					ret=-1;
+				}
+			}
+		}
+		else
+		{
+			// pos 0,1
+			if(filaSeleccionada==0 && columnaSeleccionada==1)
+			{
+				if(arrayTablero[0][0]==0)
+				{
+					// el swapeo es posible!
+					ret=0;
+				}
+				else
+				{
+					if(arrayTablero[1][1]==0)
+					{
+						// el swapeo es posible!
+						ret=0;
+					}
+					else
+					{
+						if(arrayTablero[0][2]==0)
+						{
+							// el swapeo es posible!
+							ret=0;
+						}
+						else
+						{
+							// no se puede realizar el swapeo
+							ret=-1;
+						}
+					}
+				}
+			}
+			else
+			{
+				// pos 0,2
+				if(filaSeleccionada==0 && columnaSeleccionada==2)
+				{
+					if(arrayTablero[0][1]==0)
+					{
+						// el swapeo es posible!
+						ret=0;
+					}
+					else
+					{
+						if(arrayTablero[1][2]==0)
+						{
+							// el swapeo es posible!
+							ret=0;
+						}
+						else
+						{
+							// no se puede realizar el swapeo
+							ret=-1;
+						}
+					}
+				}
+				else
+				{
+					// pos 1,0
+					if(filaSeleccionada==1 && columnaSeleccionada==0)
+					{
+						if(arrayTablero[0][0]==0)
+						{
+							// el swapeo es posible!
+							ret=0;
+						}
+						else
+						{
+							if(arrayTablero[1][1]==0)
+							{
+								// el swapeo es posible!
+								ret=0;
+							}
+							else
+							{
+								if(arrayTablero[2][0]==0)
+								{
+									// el swapeo es posible!
+									ret=0;
+								}
+								else
+								{
+									// no se puede realizar el swapeo
+									ret=-1;
+								}
+							}
+						}
+					}
+					else
+					{
+						// pos 1,1
+						if(filaSeleccionada==1 && columnaSeleccionada==1)
+						{
+							if(arrayTablero[1][0]==0)
+							{
+								// el swapeo es posible!
+								ret=0;
+							}
+							else
+							{
+								if(arrayTablero[0][1]==0)
+								{
+									// el swapeo es posible!
+									ret=0;
+								}
+								else
+								{
+									if(arrayTablero[1][2]==0)
+									{
+										// el swapeo es posible!
+										ret=0;
+									}
+									else
+									{
+										if(arrayTablero[2][1]==0)
+										{
+											// el swapeo es posible!
+											ret=0;
+										}
+										else
+										{
+											// no se puede realizar el swapeo
+											ret=-1;
+										}
+									}
+								}
+							}
+						}
+						// pos 1,2
+						if(filaSeleccionada==1 && columnaSeleccionada==2)
+						{
+							if(arrayTablero[0][2]==0)
+							{
+								// el swapeo es posible!
+								ret=0;
+							}
+							else
+							{
+								if(arrayTablero[1][1]==0)
+								{
+									// el swapeo es posible!
+									ret=0;
+								}
+								else
+								{
+									if(arrayTablero[2][2]==0)
+									{
+										// el swapeo es posible!
+										ret=0;
+									}
+									else
+									{
+										// no se puede realizar el swapeo
+										ret=-1;
+									}
+								}
+							}
+						}
+						// pos 2,0
+						if(filaSeleccionada==2 && columnaSeleccionada==0)
+						{
+							if(arrayTablero[1][0]==0)
+							{
+								// el swapeo es posible!
+								ret=0;
+							}
+							else
+							{
+								if(arrayTablero[2][1]==0)
+								{
+									// el swapeo es posible!
+									ret=0;
+								}
+								else
+								{
+									// no se puede realizar el swapeo
+									ret=-1;
+								}
+							}
+						}
+						else
+						{
+							// pos 2,1
+							if(filaSeleccionada==2 && columnaSeleccionada==1)
+							{
+								if(arrayTablero[2][0]==0)
+								{
+									// el swapeo es posible!
+									ret=0;
+								}
+								else
+								{
+									if(arrayTablero[1][1]==0)
+									{
+										// el swapeo es posible!
+										ret=0;
+									}
+									else
+									{
+										if(arrayTablero[2][2]==0)
+										{
+											// el swapeo es posible!
+											ret=0;
+										}
+										else
+										{
+											// no se puede realizar el swapeo
+											ret=-1;
+										}
+									}
+								}
+							}
+							// pos 2,2
+							if(filaSeleccionada==2 && columnaSeleccionada==2)
+							{
+								if(arrayTablero[2][1]==0)
+								{
+									// el swapeo es posible!
+									ret=0;
+								}
+								else
+								{
+									if(arrayTablero[1][2]==0)
+									{
+										// el swapeo es posible!
+										ret=0;
+									}
+									else
+									{
+										// no se puede realizar el swapeo
+										ret=-1;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return ret;
+}
+
+int intercambioValoresArray(int arrayTablero[][3], int lenFilas, int lenColumnas, int indiceFila, int indiceColumna, int valorSeleccionado, int filaPosNula, int columnaPosNula)
 {
 	int ret=-1;
 	int i;
 	int j;
-	int aux[2];
+	int aux;
 
 	if(arrayTablero != NULL && lenFilas > 0 &&  lenColumnas > 0 && indiceFila>=0 && indiceColumna>=0 && filaPosNula>=0 && columnaPosNula >=0)
 	{
@@ -141,19 +411,32 @@ int intercambioValoresArray(int arrayTablero[], int lenFilas, int lenColumnas, i
 		{
 			for(j=0;j<lenColumnas;j++)
 			{
-				if(arrayTablero[i] == indiceFila && arrayTablero[j]==indiceColumna)
+				if(arrayTablero[i][j] == valorSeleccionado)
 				{
-					aux[0] = arrayTablero[i];
-					aux[1] = arrayTablero[j];
-					arrayTablero[i] = 0;
-					arrayTablero[j] = 0;
-					arrayTablero[filaPosNula] = aux[0];
-					arrayTablero[columnaPosNula] = aux[1];
+					aux = valorSeleccionado;
+					arrayTablero[i][j] = 0;
+					arrayTablero[filaPosNula][columnaPosNula] = aux;
 					ret=0;
 				}
 			}
 		}
 	}
+	return ret;
+}
+
+int chequeartableroOrdenado(int arrayTablero[][3], int lenFilas, int lenColumnas)
+{
+	int ret=-1;
+
+	if(arrayTablero!= NULL && lenFilas > 0 &&  lenColumnas > 0)
+	{
+		if(arrayTablero[0][0]==1 && arrayTablero[0][1]==2 && arrayTablero[0][2]==3 && arrayTablero[1][0]==4 && arrayTablero[1][1]==5 && arrayTablero[1][2]==6 && arrayTablero[2][0]==7 && arrayTablero[2][1]==8 && arrayTablero[2][2]==0)
+		{
+			// se gano nomas che
+			ret=0;
+		}
+	}
+
 	return ret;
 }
 

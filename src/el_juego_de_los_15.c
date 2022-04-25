@@ -64,28 +64,38 @@ int main(void) {
 
 			 columnaPosNula = indicePosNulaEncontrado[1];
 
-			//printf("\n\n\tEl indice del numero es: %d\n\tel valor es %d\n\tel 0 esta en:%d", indiceEncontrado, valorEncontrado,indicePosNula);
+			 // validamos la posibilidad de swapear
+
+			 if(validarSwapeo(arrayTablero, LEN_TABLERO_FILAS, LEN_TABLERO_COLUMNAS, indiceFila, indiceColumna)==0)
+			 {
+				 // se puede swapear
+				 intercambioValoresArray(arrayTablero, LEN_TABLERO_FILAS ,LEN_TABLERO_COLUMNAS, indiceFila, indiceColumna, valorEncontrado, filaPosNula, columnaPosNula);
+			 }
+			 else
+			 {
+				 system("clear");
+				 printf("\n\n\tPor favor seleccione una posicion valida");
+			 }
 
 
-			// aca se hace el swapeo
-			intercambioValoresArray(arrayTablero, LEN_TABLERO_FILAS ,LEN_TABLERO_COLUMNAS, indiceFila, indiceColumna, filaPosNula, columnaPosNula);
 		}
 		else
 		{
 			// erro 2 veces pero sigue a este cartel mas especifico para que ingrese bien un numero
-			printf("\n\n\tDale forro, son 8 numeros, elegi bien!");
+			printf("\n\n\tDale loco, son 8 numeros, elegi bien!");
 		}
 
+		// aca chequear si se gano!
+		if(chequeartableroOrdenado(arrayTablero, LEN_TABLERO_FILAS, LEN_TABLERO_COLUMNAS)==0)
+		{
+			printf("\n\n\tGanaste!!!\n");
+		}
 
-		system("cls");
 		mostrarArrayInt(arrayTablero,LEN_TABLERO_FILAS,LEN_TABLERO_COLUMNAS);
-		printf("\n\n\tEl indice del numero es fila: %d\n\tEl indice del numero es columna: %d\n\tEl valor de la pos. es: %d", indiceEncontrado[0], indiceEncontrado[1], valorEncontrado);
-		printf("\n\n\tPosicion 0 en fila: %d\n\tPosicion 0 en columna: %d", indicePosNulaEncontrado[0],indicePosNulaEncontrado[1]);
+		//printf("\n\n\tEl indice del numero es fila: %d\n\tEl indice del numero es columna: %d\n\tEl valor de la pos. es: %d", indiceEncontrado[0], indiceEncontrado[1], valorEncontrado);
+		//printf("\n\n\tPosicion 0 en fila: %d\n\tPosicion 0 en columna: %d", indicePosNulaEncontrado[0],indicePosNulaEncontrado[1]);
 
 	}while(juegoFinalizado);
-
-
-
 
 
 	return EXIT_SUCCESS;
