@@ -13,26 +13,32 @@
 #include "input.h"
 #include "calculos_juego.h"
 
-#define LEN_TABLERO 9
+#define LEN_TABLERO_FILAS 3
+#define LEN_TABLERO_COLUMNAS 3
 
 int main(void) {
 	setbuf(stdout, NULL);
 
-	int arrayTablero[LEN_TABLERO]= {7,5,3,6,2,4,1,8};
+	int arrayTablero[LEN_TABLERO_FILAS][LEN_TABLERO_COLUMNAS]={{7,5,3},{6,2,4},{1,8,0}};
 
 	int numeroSeleccionado;
 
 	int juegoFinalizado;
 
-	int indiceEncontrado;
+	int indiceEncontrado[2]; // siempre voy a encontrar de a 2
+
+	int indiceFila;
+
+	int indiceColumna;
+
+	int indicePosNulaEncontrado[2];
 
 	int valorEncontrado;
 
-	int indicePosNula;
-
 	//iniciarArrayInt(arrayTablero, LEN_TABLERO);
 
-	mostrarArrayInt(arrayTablero, LEN_TABLERO);
+	mostrarArrayInt(arrayTablero,LEN_TABLERO_FILAS,LEN_TABLERO_COLUMNAS);
+
 
 	do
 	{
@@ -40,16 +46,21 @@ int main(void) {
 
 		if(utn_getNumber(&numeroSeleccionado, "\n\n\tSeleccione el numero que quiere mover: ", "Error", 1, 8, 2)==0)
 		{
-			indiceEncontrado = buscarIndiceArray(arrayTablero, LEN_TABLERO, numeroSeleccionado);
+			 buscarIndiceArray(arrayTablero, LEN_TABLERO_FILAS ,LEN_TABLERO_COLUMNAS , numeroSeleccionado,indiceEncontrado);
 
-			valorEncontrado = buscarValorArray(arrayTablero, LEN_TABLERO, indiceEncontrado);
+			 indiceFila = indiceEncontrado[0];
 
-			indicePosNula = buscarPosicionNulaArray(arrayTablero, LEN_TABLERO);
+			 indiceColumna = indiceEncontrado[1];
 
-			printf("\n\n\tEl indice del numero es: %d\n\tel valor es %d\n\tel 0 esta en:%d", indiceEncontrado, valorEncontrado,indicePosNula);
+			 valorEncontrado = buscarValorArray(arrayTablero, LEN_TABLERO_FILAS ,LEN_TABLERO_COLUMNAS, indiceFila, indiceColumna);
+
+			 buscarPosicionNulaArray(arrayTablero, LEN_TABLERO_FILAS ,LEN_TABLERO_COLUMNAS, indicePosNulaEncontrado);
+
+			//printf("\n\n\tEl indice del numero es: %d\n\tel valor es %d\n\tel 0 esta en:%d", indiceEncontrado, valorEncontrado,indicePosNula);
+
 
 			// aca se hace el swapeo
-			intercambioValoresArray(arrayTablero, LEN_TABLERO, indiceEncontrado, valorEncontrado, indicePosNula);
+			//intercambioValoresArray(arrayTablero, LEN_TABLERO, indiceEncontrado, valorEncontrado, indicePosNula);
 		}
 		else
 		{
@@ -59,7 +70,9 @@ int main(void) {
 
 
 		system("cls");
-		mostrarArrayInt(arrayTablero, LEN_TABLERO);
+		mostrarArrayInt(arrayTablero,LEN_TABLERO_FILAS,LEN_TABLERO_COLUMNAS);
+		printf("\n\n\tEl indice del numero es fila: %d\n\tEl indice del numero es columna: %d\n\tEl valor de la pos. es: %d", indiceEncontrado[0], indiceEncontrado[1], valorEncontrado);
+		printf("\n\n\tPosicion 0 en fila: %d\n\tPosicion 0 en columna: %d", indicePosNulaEncontrado[0],indicePosNulaEncontrado[1]);
 
 	}while(juegoFinalizado);
 

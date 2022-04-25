@@ -14,13 +14,13 @@
 
 //int iniciarArrayInt(int arrayTablero[], int len);
 
-int mostrarArrayInt(int arrayTablero[], int len);
+void mostrarArrayInt(int arrayTablero[][3], int lenFilas, int lenColumnas);
 
-int buscarIndiceArray(int arrayTablero[], int len, int numeroABuscar);
+int buscarIndiceArray(int arrayTablero[][3], int lenFilas, int lenColumnas, int numeroABuscar, int indiceEncontrado[]);
 
-int buscarValorArray(int arrayTablero[], int len, int indiceParaValor);
+int buscarValorArray(int arrayTablero[][3], int lenFilas, int lenColumnas, int indiceFila, int indiceColumna);
 
-int buscarPosicionNulaArray(int arrayTablero[], int len);
+int buscarPosicionNulaArray(int arrayTablero[][3], int lenFilas, int lenColumnas, int indicePosNula[]);
 
 int intercambioValoresArray(int arrayTablero[], int len, int indiceEncontrado, int valorEncontrado, int indiceNulo);
 

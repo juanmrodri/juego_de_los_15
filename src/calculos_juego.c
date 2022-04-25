@@ -9,7 +9,7 @@
 #include <stdlib.h>
 
 
-/*int iniciarArrayInt(int arrayTablero[], int len)
+/*int iniciarArrayInt(int arrayTablero[][3], int len)
 {
 	int ret=-1;
 	int i;
@@ -34,69 +34,98 @@
 	return ret;
 }*/
 
-void mostrarArrayInt(int arrayTablero[], int len)
+void mostrarArrayInt(int arrayTablero[][3], int lenFilas, int lenColumnas)
 {
-	if(arrayTablero != NULL && len > 0)
+	int i;
+	int j;
+	//int tableroMostrado; para hacerlo con do while
+
+	if(arrayTablero != NULL && lenFilas > 0 && lenColumnas > 0)
 		{
-			printf("\n\n\t%d %d %d\n\n", arrayTablero[0], arrayTablero[1], arrayTablero[2]);
-			printf("\t%d %d %d\n\n", arrayTablero[3], arrayTablero[4], arrayTablero[5]);
-			printf("\t%d %d %d", arrayTablero[6], arrayTablero[7], arrayTablero[8]);
+			for(i=0;i<lenFilas;i++)
+			{
+				printf("\n\t");
+				for(j=0;j<lenColumnas;j++)
+				{
+					printf("%d ", arrayTablero[i][j]);
+				}
+				printf("\n");
+			}
+
 		}
 }
 
-int buscarIndiceArray(int arrayTablero[], int len, int numeroABuscar)
+int buscarIndiceArray(int arrayTablero[][3], int lenFilas, int lenColumnas, int numeroABuscar, int indiceEncontrado[])
 {
-	int indice;
+	int ret=-1;
 	int i;
+	int j;
 
-	if(arrayTablero != NULL && len > 0)
+	if(arrayTablero != NULL && lenFilas > 0 && lenColumnas > 0 && numeroABuscar != 0)
 	{
-		for(i=0;i<len;i++)
+		for(i=0;i<lenFilas;i++)
 		{
-			if(arrayTablero[i]==numeroABuscar)
+			for(j=0;j<lenColumnas;j++)
 			{
-				// esta es la posicion del numero buscado
-				indice = i; // me llevo el indice
+				if(arrayTablero[i][j]==numeroABuscar)
+				{
+					// esta es la posicion del numero buscado
+					ret=0;
+					indiceEncontrado[0] = i;
+					indiceEncontrado[1] = j; // me llevo los dos indices
+					break;
+				}
 			}
 		}
 	}
-	return indice;
+	return ret;
 }
 
-int buscarValorArray(int arrayTablero[], int len, int indiceParaValor)
+int buscarValorArray(int arrayTablero[][3], int lenFilas, int lenColumnas, int indiceFila, int indiceColumna)
 {
 	int valor;
 	int i;
+	int j;
 
-	if(arrayTablero != NULL && len > 0)
+	if(arrayTablero != NULL && lenFilas > 0 && lenColumnas > 0)
 	{
-		for(i=0;i<len;i++)
+		for(i=0;i<lenFilas;i++)
 		{
-			if(i==indiceParaValor)
+			for(j=0;j<lenColumnas;j++)
 			{
-				valor = arrayTablero[i];
+				if(i==indiceFila && j==indiceColumna)
+				{
+					valor = arrayTablero[i][j];
+				}
 			}
 		}
 	}
 	return valor;
 }
 
-int buscarPosicionNulaArray(int arrayTablero[], int len)
+int buscarPosicionNulaArray(int arrayTablero[][3], int lenFilas, int lenColumnas, int indicePosNula[])
 {
-	int indice;
+	int ret=-1;
 	int i;
+	int j;
 
-	if(arrayTablero != NULL && len > 0)
+	if(arrayTablero != NULL && lenFilas > 0 && lenColumnas > 0)
 	{
-		for(i=0;i<len;i++)
+		for(i=0;i<lenFilas;i++)
 		{
-			if(arrayTablero[i]==0)
+			for(j=0;j<lenColumnas;j++)
 			{
-				indice = i;
+				if(arrayTablero[i][j]==0)
+				{
+					ret=0;
+					indicePosNula[0] = i;
+					indicePosNula[1] = j;
+					break;
+				}
 			}
 		}
 	}
-	return indice;
+	return ret;
 }
 
 int intercambioValoresArray(int arrayTablero[], int len, int indiceEncontrado, int valorEncontrado, int indiceNulo)
