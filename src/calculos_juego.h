@@ -22,7 +22,7 @@ int buscarValorArray(int arrayTablero[][3], int lenFilas, int lenColumnas, int i
 
 int buscarPosicionNulaArray(int arrayTablero[][3], int lenFilas, int lenColumnas, int indicePosNula[]);
 
-int intercambioValoresArray(int arrayTablero[], int len, int indiceEncontrado, int valorEncontrado, int indiceNulo);
+int intercambioValoresArray(int arrayTablero[], int lenFilas, int lenColumnas, int indiceFila, int indiceColumna, int filaPosNula, int columnaPosNula);
 
 
 #endif /* CALCULOS_JUEGO_H_ */

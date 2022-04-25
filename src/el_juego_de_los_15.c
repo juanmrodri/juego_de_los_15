@@ -33,6 +33,10 @@ int main(void) {
 
 	int indicePosNulaEncontrado[2];
 
+	int filaPosNula;
+
+	int columnaPosNula;
+
 	int valorEncontrado;
 
 	//iniciarArrayInt(arrayTablero, LEN_TABLERO);
@@ -56,11 +60,15 @@ int main(void) {
 
 			 buscarPosicionNulaArray(arrayTablero, LEN_TABLERO_FILAS ,LEN_TABLERO_COLUMNAS, indicePosNulaEncontrado);
 
+			 filaPosNula = indicePosNulaEncontrado[0];
+
+			 columnaPosNula = indicePosNulaEncontrado[1];
+
 			//printf("\n\n\tEl indice del numero es: %d\n\tel valor es %d\n\tel 0 esta en:%d", indiceEncontrado, valorEncontrado,indicePosNula);
 
 
 			// aca se hace el swapeo
-			//intercambioValoresArray(arrayTablero, LEN_TABLERO, indiceEncontrado, valorEncontrado, indicePosNula);
+			intercambioValoresArray(arrayTablero, LEN_TABLERO_FILAS ,LEN_TABLERO_COLUMNAS, indiceFila, indiceColumna, filaPosNula, columnaPosNula);
 		}
 		else
 		{

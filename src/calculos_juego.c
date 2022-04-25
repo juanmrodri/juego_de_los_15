@@ -128,21 +128,29 @@ int buscarPosicionNulaArray(int arrayTablero[][3], int lenFilas, int lenColumnas
 	return ret;
 }
 
-int intercambioValoresArray(int arrayTablero[], int len, int indiceEncontrado, int valorEncontrado, int indiceNulo)
+int intercambioValoresArray(int arrayTablero[], int lenFilas, int lenColumnas, int indiceFila, int indiceColumna, int filaPosNula, int columnaPosNula)
 {
 	int ret=-1;
 	int i;
-	int aux;
+	int j;
+	int aux[2];
 
-	if(arrayTablero != NULL && len > 0 && indiceEncontrado>=0 && valorEncontrado>0 && indiceNulo>=0)
+	if(arrayTablero != NULL && lenFilas > 0 &&  lenColumnas > 0 && indiceFila>=0 && indiceColumna>=0 && filaPosNula>=0 && columnaPosNula >=0)
 	{
-		for(i=0;i<len;i++)
+		for(i=0;i<lenFilas;i++)
 		{
-			if(i == indiceEncontrado)
+			for(j=0;j<lenColumnas;j++)
 			{
-				aux = arrayTablero[i];
-				arrayTablero[i] = 0;
-				arrayTablero[indiceNulo] = aux;
+				if(arrayTablero[i] == indiceFila && arrayTablero[j]==indiceColumna)
+				{
+					aux[0] = arrayTablero[i];
+					aux[1] = arrayTablero[j];
+					arrayTablero[i] = 0;
+					arrayTablero[j] = 0;
+					arrayTablero[filaPosNula] = aux[0];
+					arrayTablero[columnaPosNula] = aux[1];
+					ret=0;
+				}
 			}
 		}
 	}
